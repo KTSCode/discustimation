@@ -11,4 +11,4 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## TODO
   - [ ] Set up email password reset
-  - [ ] Install and set up tailwind.css
+  - [x] Install and set up tailwind.css
