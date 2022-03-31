@@ -10,19 +10,32 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body>
-    <header class="">
-      <section>
-        <nav>
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
-            <% end %>
-          </ul>
+    <div class="drawer">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle">
+      <div class="drawer-content">
+        <div class='flex'>
+        <label for="my-drawer" class="absolute m-0 md:m-1 btn btn-ghost drawer-button">
+          <svg class="fill-current swap-off " xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
+            <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/>
+          </svg>
+        </label>
+        <div class="flex-auto text-center max-h-20">
+          <h1 class="pt-1 text-3xl font-bold text-center text-green-500 md:pt-2 md:text-4xl lg:text-5xl">Discustimation</h1>
+          <p class="hidden text-sm text-gray-300 md:block lg:text-base">A Planning Poker Estimation Tool</p>
+        </div>
+        </div>
+      <%= @inner_content %>
+      </div>
+      <div class="drawer-side">
+        <label for="my-drawer" class="drawer-overlay"></label>
+        <ul class="p-4 overflow-y-auto menu w-60 md:w-80 bg-base-100 text-base-content">
+          <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+          <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+            <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
+          <% end %>
           <%= render "_user_menu.html", assigns %>
-        </nav>
-      </section>
-    </header>
-    <%= @inner_content %>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
