@@ -8,6 +8,12 @@
     "deploy": "NODE_ENV=production tailwindcss --postcss --minify --input=css/app.css --output=../priv/static/assets/app.css"
   },
   "dependencies": {
+    "alpinejs": "^3.9.6",
     "daisyui": "^2.13.2"
-  }
+  },
+  "name": "assets",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Kyle San Clemente",
+  "license": "MIT"
 }

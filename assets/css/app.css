@@ -7,9 +7,28 @@
  */
 @tailwind base;
 
+h1 {
+  @apply text-4xl;
+  @apply p-2;
+}
+h2 {
+  @apply text-xl;
+}
+h3 {
+  @apply text-lg;
+}
+a {
+  @apply text-blue-600 underline;
+}
+
 @tailwind components;
 
 @tailwind utilities;
+
+/*Fix Firefox yellow input background*/
+input:autofill {
+  background: transparent; /* or any other */
+}
 
 
 /* Alerts and form errors used by phx.new */
