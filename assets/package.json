@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "alpinejs": "^3.9.6",
-    "daisyui": "^2.13.2"
+    "daisyui": "^2.13.6"
   },
   "name": "assets",
   "version": "1.0.0",
