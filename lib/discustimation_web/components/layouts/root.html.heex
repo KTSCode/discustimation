@@ -5,33 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
     <.live_title suffix=" · Phoenix Framework">
-      <%= assigns[:page_title] || "Discustimation" %>
+    <%= assigns[:page_title] || "Discustimation" %>
     </.live_title>
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </head>
-  <body class="bg-white antialiased">
-    <ul>
-      <%= if @current_user do %>
-        <li>
-          <%= @current_user.email %>
-        </li>
-        <li>
-          <.link href={~p"/users/settings"}>Settings</.link>
-        </li>
-        <li>
-          <.link href={~p"/users/log_out"} method="delete">Log out</.link>
-        </li>
-      <% else %>
-        <li>
-          <.link href={~p"/users/register"}>Register</.link>
-        </li>
-        <li>
-          <.link href={~p"/users/log_in"}>Log in</.link>
-        </li>
-      <% end %>
-    </ul>
-    <%= @inner_content %>
+  <body class="antialiased bg-white drawer">
+    <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+    <div class="flex flex-col drawer-content">
+      <!-- Navbar -->
+      <div class="w-full navbar bg-base-300">
+        <div class="flex-none lg:hidden">
+          <label for="my-drawer-3" class="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </label>
+        </div>
+        <div class="flex-1 px-2 mx-2">Discustimation</div>
+        <div class="flex-none hidden lg:block">
+          <ul class="menu menu-horizontal">
+            <%= if @current_user do %>
+              <li>
+                <.link href={~p"/users/log_out"} method="delete">Log out</.link>
+              </li>
+              <li>
+                <.link href={~p"/users/settings"}><%= @current_user.email %></.link>
+              </li>
+            <% else %>
+              <li>
+                <.link href={~p"/users/register"}>Register</.link>
+              </li>
+              <li>
+                <.link href={~p"/users/log_in"}>Log in</.link>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <%= @inner_content %>
+    </div>
+    <div class="drawer-side">
+      <label for="my-drawer-3" class="drawer-overlay"></label>
+      <!-- Navbar menu content here -->
+      <ul class="p-4 menu w-80 bg-base-100">
+        <%= if @current_user do %>
+
+          <li>
+            <.link href={~p"/users/settings"}> <%= @current_user.email %></.link>
+          </li>
+          <li>
+            <.link href={~p"/users/log_out"} method="delete">Log out</.link>
+          </li>
+        <% else %>
+          <li>
+            <.link href={~p"/users/register"}>Register</.link>
+          </li>
+          <li>
+            <.link href={~p"/users/log_in"}>Log in</.link>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
   </body>
 </html>
