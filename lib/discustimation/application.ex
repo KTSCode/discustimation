@@ -8,12 +8,14 @@ defmodule Discustimation.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      Discustimation.Repo,
       # Start the Telemetry supervisor
       DiscustimationWeb.Telemetry,
+      # Start the Ecto repository
+      Discustimation.Repo,
       # Start the PubSub system
       {Phoenix.PubSub, name: Discustimation.PubSub},
+      # Start Finch
+      {Finch, name: Discustimation.Finch},
       # Start the Endpoint (http/https)
       DiscustimationWeb.Endpoint
       # Start a worker by calling: Discustimation.Worker.start_link(arg)
